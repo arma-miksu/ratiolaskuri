@@ -27,7 +27,6 @@ class RatioCounter extends Component {
   render() {
     return (
       <div className="App-ratiocounter">
-        <h3>Ratiolaskuri</h3>
         <Grid>
           <Form inline>
             <Row>
