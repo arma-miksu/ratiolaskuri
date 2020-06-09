@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
+import { Grid, Row, Form, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 
 class RatioCounter extends Component {
   static calculate(ratio, players) {
@@ -28,22 +28,31 @@ class RatioCounter extends Component {
     return (
       <div className="App-ratiocounter">
         <h3>Ratiolaskuri</h3>
-        <Form inline>
-          <FormGroup bsSize={"large"} controlId={"ratio_x"}>
-            <ControlLabel>Ratio</ControlLabel>
-            <FormControl type={"text"} placeholder={"1:2"} onKeyUp={(e) => this.setRatio(e.target.value)} />
-          </FormGroup>
-          <FormGroup bsSize={"large"} controlId={"sum"}>
-            <ControlLabel>Pelaajamäärä</ControlLabel>
-            <FormControl type={"number"} placeholder={"94"} onChange={(e) => this.setPlayers(e.target.value)} />
-          </FormGroup>
-          <br/>
-          <FormGroup bsSize={"large"} controlId={"result"}>
-            <FormControl.Static>
-              {this.state.result}
-            </FormControl.Static>
-          </FormGroup>
-        </Form>
+        <Grid>
+          <Form inline>
+            <Row>
+              <FormGroup bsSize={"large"} controlId={"ratio_x"}>
+                <ControlLabel>Ratio</ControlLabel>
+                <br/>
+                <FormControl type={"text"} placeholder={"1:2"} onKeyUp={(e) => this.setRatio(e.target.value)} />
+              </FormGroup>
+            </Row>
+            <Row>
+              <FormGroup bsSize={"large"} controlId={"sum"}>
+                <ControlLabel>Pelaajamäärä</ControlLabel>
+                <br/>
+                <FormControl type={"number"} placeholder={"94"} onChange={(e) => this.setPlayers(e.target.value)} />
+              </FormGroup>
+            </Row>
+            <Row>
+              <FormGroup bsSize={"large"} controlId={"result"}>
+                <FormControl.Static>
+                  <span className="result">{this.state.result}</span>
+                </FormControl.Static>
+              </FormGroup>
+            </Row>
+          </Form>
+        </Grid>
       </div>
     );
   }
