@@ -39,4 +39,12 @@ jobs:
         uses: actions/download-artifact@v1
         with:
           name: build
-      - run: ls build
+      - name: Deploy to Cloud storage
+        uses: abinmn/gcp-storage-bucket-action@v1.0
+        with:
+          service_key: ${{ secrets.GCP_SERVICE_KEY }}
+          project: ${{ secrets.GCP_PROJECT }}
+          bucket_name: ${{ secrets.GCP_BUCKET_NAME }}
+          home_page_path: index.html
+          error_page_path: index.html
+          build_folder: ${{ github.workspace }}/build
